@@ -5,13 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.destroy_all
 Session.destroy_all
 Entry.destroy_all
-
+User.destroy_all
 
 user1 = User.create(username: 'kcree', firstname: 'kelsey', password: 'apple')
 
-session1 = Session.create(user_id: user1)
+session1 = Session.create(user_id: user1.id)
+session2 = Session.create(user_id: user1.id)
+session3 = Session.create(user_id: user1.id)
 
-entry1 = Entry.create(item1: 'mom', item2: 'dad', item3: 'sisters', user_id: user1)
+entry1 = Entry.create(item1: 'Mom', item2: 'Dad', item3: 'Sisters', user_id: user1.id)
+entry2 = Entry.create(item1: 'Apartment', item2: 'Puppy', item3: 'Boyfriend', user_id: user1.id)
+entry3 = Entry.create(item1: 'My bed', item2: 'Flatiron', item3: 'Steak', user_id: user1.id)
