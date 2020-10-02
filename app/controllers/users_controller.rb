@@ -22,7 +22,6 @@ class UsersController < ApplicationController
       @user.save
       @token = JWT.encode({ user_id: @user.id }, Rails.application.secrets.secret_key_base[0])
       render json: { token: @token, user: @user }, status: :ok
-      render json: @user
     else
       render json: { errors: @user.errors.full_messages }
     end
