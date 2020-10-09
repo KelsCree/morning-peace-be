@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_09_29_003104) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "entries", force: :cascade do |t|
     t.string "item1"
     t.string "item2"
     t.string "item3"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "date"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_003104) do
 
   create_table "sessions", force: :cascade do |t|
     t.datetime "date"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
