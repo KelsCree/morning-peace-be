@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
     else
       token = auth_header.split(' ')[1]
       begin
-        decoded_token = JWT.decode(token, Rails.application.secrets.secret_key_base[0])
+        decoded_token = JWT.decode(token, ENV['SECRET_KEY_BASE'])
         payload = decoded_token.first
         user_id = payload['user_id']
         @user = User.find(user_id)
